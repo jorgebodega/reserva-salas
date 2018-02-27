@@ -1,0 +1,34 @@
+Salas :
+    'Canalobre3' : 57
+    'Canalobre4' : 61
+    'Canalobre5' : 59
+    'Canalobre6' : 63
+    'Canalobre7' : 65
+    'Canalobre8' : 67
+    'Canalobre9' : 69
+    '1102' : 73
+    '1103' : 79
+    '1104' : 75
+    '1105' : 77
+    '1107' : 81
+    '6010' : 51
+
+Intervalos :
+    'Uno' :
+        beginPeriod : '09:00:00'
+        endPeriod : '11:00:00'
+    'Dos' :
+        beginPeriod : '11:00:00'
+        endPeriod : '13:00:00'
+    'Tres' :
+        beginPeriod : '13:00:00'
+        endPeriod : '15:00:00'
+    'Cuatro' :
+        beginPeriod : '15:00:00'
+        endPeriod : '17:00:00'
+    'Cinco' :
+        beginPeriod : '17:00:00'
+        endPeriod : '19:00:00'
+    'Seis' :
+        beginPeriod : '19:00:00'
+        endPeriod : '21:00:00'

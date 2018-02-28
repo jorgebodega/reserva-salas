@@ -1,5 +1,8 @@
 # reserva-salas
 
+***AVISO IMPORTANTE: ACUERDATE DE NO HABER UTILIZADO YA TUS DOS HORAS EN OTRA RESERVA.***
+***ADEMAS, SI RESERVAS MAS ALLÁ DE SIETE DIAS, EL PROGRAMA PARECE FUNCIONAR PERO NO HACE RESERVA.***
+
 Se deben introducir los datos de los usuarios en el archivo de configuracion. ¡Ojo, desde el programa no se hace nada con esos datos, pero aun asi ten cuidado al introducirlos!
 
 Comando para el uso del script (en este orden):

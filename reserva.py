@@ -5,10 +5,11 @@ import sys
 from datetime import datetime, timedelta
 from json import load
 from lxml import html
-from requests import Session
+from requests.sessions import Session
+# from sessions import Session
 
 ################ Manejador de JSON
-CONFIG = load(open('CONFIG.json'))
+CONFIG = load(open('config.json'))
 ################
 
 ################ manejadores

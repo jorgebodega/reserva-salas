@@ -1,41 +1,39 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys, os
-from lxml import html
-from yaml import load
+import sys
 from datetime import datetime, timedelta
+from json import load
+from lxml import html
 from requests import Session
 
-################ Manejador de yaml
-path = os.path.dirname(os.path.abspath(__file__))
-with open(path + '/config.yml', 'r') as configfile:
-    config = load(configfile)
+################ Manejador de JSON
+CONFIG = load(open('CONFIG.json'))
 ################
 
 ################ manejadores
-USER = config['Usuarios'][sys.argv[3]]
-SALA = config['Salas'][sys.argv[1]]
-INTER = config['Intervalos'][sys.argv[2]]
+USER = CONFIG['Usuarios'][sys.argv[3]]
+SALA = CONFIG['Salas'][sys.argv[1]]
+INTER = CONFIG['Intervalos'][sys.argv[2]]
 DIAS = sys.argv[4]
 FLAG = bool(len(sys.argv) == 6 and sys.argv[5] == '-d')
 ################
 
 ################ Inicio de sesion
-s = Session()
+SESSION = Session()
 login = {
     'email': USER['Usuario'],
     'password': USER['Pass'],
     'login': 'onSubmit'
 }
 if FLAG: print('Realizando login con usuario: {}'.format(USER['Usuario']))
-s.post("https://web1.fi.upm.es/aulas/index.php", data=login)
+SESSION.post("https://web1.fi.upm.es/aulas/index.php", data=login)
 ################
 
 ################ Avanzamos a la pagina de reserva
 url_sala = 'https://web1.fi.upm.es/aulas/reservation.php?rid={}'.format(SALA)
 if FLAG: print('Obteniendo el resultado para la reserva de la sala: {}'.format(sys.argv[1]))
-url = s.get(url_sala)
+url = SESSION.get(url_sala)
 if FLAG: print('Resultado de la petición: {}'.format(url.status_code))
 if url.status_code != 200:
     print('Algo fallo!')
@@ -79,14 +77,16 @@ datos_pet = {
     'seriesUpdateScope' : 'full',
     'CSRF_TOKEN' : token
 }
-peticion = s.post("https://web1.fi.upm.es/aulas/ajax/reservation_save.php", data=datos_pet)
+peticion = SESSION.post("https://web1.fi.upm.es/aulas/ajax/reservation_save.php", data=datos_pet)
 if FLAG: print('Resultado de la query: {}'.format(peticion.status_code))
 if FLAG:
-    if peticion.status_code == 200: print('Reserva correcta.')
+    if peticion.status_code == 200:
+        print('Peticion correcta. Comprueba que se ha reservado.')
+        print('Si se pasa de plazo, has reservado ya o demasiados dias a futuro no reserva.')
     else:
         print('Fallo en la peticion.')
         print(peticion.text)
 
-close_session = s.get('https://web1.fi.upm.es/aulas/logout.php')
+close_session = SESSION.get('https://web1.fi.upm.es/aulas/logout.php')
 if FLAG: print('Cerrando sesión')
 ################

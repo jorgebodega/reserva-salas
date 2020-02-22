@@ -1,5 +1,9 @@
 # reserva-salas
 
+***Esta liberia puede considerarse deprecada. A mi y a mis amigos nos banearon del sistema por utilizarlo indiscriminadamente, y cambiaron el funcionamiento. Lo libero por si se puede reutilizar algo***
+
+---
+ 
 ***AVISO IMPORTANTE: ACUERDATE DE NO HABER UTILIZADO YA TUS DOS HORAS EN OTRA RESERVA.***
 ***ADEMAS, SI RESERVAS MAS ALLÁ DE SIETE DIAS, EL PROGRAMA PARECE FUNCIONAR PERO NO HACE RESERVA.***
 
